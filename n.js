@@ -7,10 +7,6 @@ const { nCurve } = require('./curves.js')
 var nRaw = 1500;
 // var nRaw = event['nRaw'];
 
-// current VWC - Soil Moisture % 
-var moisture = 0.15
-// var moisture = event['moisture']
-
 // STEP 1: Convert raw mV to molarity (mol/L)
 
 function nMol(nRaw, nCurve) {
