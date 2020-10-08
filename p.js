@@ -1,21 +1,27 @@
+const { pCurve } = require('./curves.js')
 'use strict';
 // raw to molarity (mol/L) calibration curve
 // 4-point Piecewise Regression Curve
-const vp1 = 500.00;
-const vp2 = 1500.00;
-const vp3 = 2200.00;
-const vp4 = 3299.99;
-// mol / L
-const cp1 = 0.00005;
-const cp2 = 0.00007;
-const cp3 = 0.00009;
-const cp4 = 0.0001;
+//console.log(pCurve)
 
+// current raw mV P value
+var pRaw = 2100;
+// var pRaw = event['pRaw'];
 
 // STEP 1: Convert raw mV to molarity (mol/L)
 
-function pMol(pRaw) {
+function pMol(pRaw, pCurve) {
     var convertedP;
+    
+    vp1 = pCurve['vp1'];
+    vp2 = pCurve['vp2'];
+    vp3 = pCurve['vp3'];
+    vp4 = pCurve['vp4'];
+    cp1 = pCurve['cp1'];
+    cp2 = pCurve['cp2'];
+    cp3 = pCurve['cp3'];
+    cp4 = pCurve['cp4'];
+    
     if (pRaw==null) {
         convertedP = null;
     } else if (pRaw <= vp1) {
@@ -33,9 +39,8 @@ function pMol(pRaw) {
     return convertedP.toFixed(5);
 }; 
 
-var pRaw = 2100;
-// var pRaw = event['pRaw'];
-var pMolarity = pMol(pRaw);
+
+var pMolarity = pMol(pRaw, pCurve);
 console.log("P (mol/L): ", pMolarity);
 
 // STEP 2 
@@ -72,7 +77,7 @@ function p_Coef(pH, pPPM) {
 };
 
 // test function out by changing pH values -- pH 4 to 6 we can nearly fully detect, above 6 the fractional correction starts getting applied (so the value will get smaller)
-var pH = 12;
+var pH = 8;
 //var pH = event["pH"]
 var pPPM2 = p_Coef(pH,pPPM1);
 console.log("H2PO4- (PPM): ", pPPM2);
