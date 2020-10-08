@@ -81,3 +81,9 @@ var pH = 8;
 //var pH = event["pH"]
 var pPPM2 = p_Coef(pH,pPPM1);
 console.log("H2PO4- (PPM): ", pPPM2);
+
+module.exports = { 
+    pMolarity,
+    pPPM1,
+    pPPM2
+                 };
