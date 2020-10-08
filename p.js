@@ -86,4 +86,4 @@ module.exports = {
     pMolarity,
     pPPM1,
     pPPM2
-                 };
+};

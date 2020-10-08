@@ -71,4 +71,4 @@ console.log("NO3- (PPM): ", nPPM1);
 module.exports = { 
     nMolarity,
     nPPM1
-                 };
+};

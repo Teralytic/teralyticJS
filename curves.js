@@ -26,10 +26,23 @@ const pCurve = {
     cp3: 0.00009,
     cp4: 0.0001
 };
-
 // console.log(pCurve['vp1']);
 
+// k piecewise regression curve (mV to mol/L)
+
+const kCurve = {
+    vk1: 3299.99,
+    vk2: 2200.00,
+    vk3: 2000.00,
+    vk4: 500.00,
+    ck1: 0.00005,
+    ck2: 0.00009,
+    ck3: 0.0002,
+    ck4: 0.001 
+};
+
 module.exports = { 
+    nCurve,
     pCurve,
-    nCurve
-                 };
+    kCurve
+};
