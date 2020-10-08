@@ -35,32 +35,32 @@ function pMol(pRaw) {
 
 var pRaw = 2100;
 // var pRaw = event['pRaw'];
-var pMol = pMol(pRaw);
-console.log("P (mol/L): ", pMol);
+var pMolarity = pMol(pRaw);
+console.log("P (mol/L): ", pMolarity);
 
 // STEP 2 
 
 // convert mol/l to PPM (mg/L)
 
-function pPPM (pMol) {
+function pPPM (pMolarity) {
     var convertedPppm;
     if (pMol==null) {
         convertedPppm = null;
     } else {
-        convertedPppm = ((pMol*96.9872)*1000)*(30.973762/96.987);   
+        convertedPppm = ((pMolarity*96.9872)*1000)*(30.973762/96.987);   
     }
     
     return convertedPppm.toFixed(2);
 };
 
-var pPPM = pPPM(pMol);
-console.log("P (PPM): ", pPPM);
+var pPPM1 = pPPM(pMolarity);
+console.log("P (PPM): ", pPPM1);
 
 // STEP 3 
 
 // Apply pH correction to the p PPM value --- because in reality  we can only sense a particular orthophosphate species - H2PO4-
 
-// dihydrogen phosphate -- this is fractional correction for accounting for species of the phosphate we currently sense. Source (Ryan M., Python: https://colab.research.google.com/drive/1IC1ifG0-7GOEDuLJrWlqKCwzkqYqJGRV?authuser=2#scrollTo=ujPQ5CZO1aPq)
+// dihydrogen phosphate -- this is fractional correction for accounting for species of the phosphate wecurrently sense. Source (Ryan M., Python: https://colab.research.google.com/drive/1IC1ifG0-7GOEDuLJrWlqKCwzkqYqJGRV?authuser=2#scrollTo=ujPQ5CZO1aPq)
 
 function p_Coef(pH, pPPM) {
     const Ka1 = 7.5 * Math.pow(10,-3);
@@ -74,5 +74,5 @@ function p_Coef(pH, pPPM) {
 // test function out by changing pH values -- pH 4 to 6 we can nearly fully detect, above 6 the fractional correction starts getting applied (so the value will get smaller)
 var pH = 12;
 //var pH = event["pH"]
-var p = p_Coef(pH,pPPM);
-console.log("H2PO4- (PPM): ", p);
+var pPPM2 = p_Coef(pH,pPPM1);
+console.log("H2PO4- (PPM): ", pPPM2);
