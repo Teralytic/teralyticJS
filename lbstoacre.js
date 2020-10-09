@@ -12,11 +12,17 @@ function ppmtoLbs (ppm) {
 }; 
 
 // NO3- lbs per acre
-nlbsAcre = ppmtoLbs(nPPM1);
+var nlbsAcre = ppmtoLbs(nPPM1);
 console.log("NO3- lbs per acre: ", nlbsAcre);
 // P lbs per acre
-plbsAcre = ppmtoLbs(pPPM1);
+var plbsAcre = ppmtoLbs(pPPM1);
 console.log("P lbs per acre: ", plbsAcre);
 // P lbs per acre
-klbsAcre = ppmtoLbs(kPPM1);
+var klbsAcre = ppmtoLbs(kPPM1);
 console.log("K lbs per acre: ", klbsAcre);
+
+module.exports = { 
+    nlbsAcre,
+    plbsAcre,
+    klbsAcre
+};
