@@ -3,7 +3,7 @@ const { nCurve } = require('./curves.js')
 // raw to molarity (mol/L) calibration curve
 // 6-point NO3- Piecewise Regression Curve
 
-// current raw mV P value
+// current raw mV N value
 var nRaw = 1500;
 // var nRaw = event['nRaw'];
 

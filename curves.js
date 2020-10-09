@@ -13,7 +13,6 @@ const nCurve = {
     cn6: 0.01
 }; 
 
-
 // p piecewise regression curve (mV to mol/L)
 
 const pCurve = {
@@ -41,8 +40,26 @@ const kCurve = {
     ck4: 0.001 
 };
 
+// pH piecewise regression curve (mV to mol/L)
+
+const pHCurve = {
+    vpH1: 900.00,
+    vpH2: 1000.00,
+    vpH3: 1100.00,
+    vpH4: 1640.00,
+    vpH5: 1840.00,
+    vpH6: 3299.99,
+    cpH1: 4.00,
+    cpH2: 6.00,
+    cpH3: 6.50,
+    cpH4: 7.70,
+    cpH5: 8.10,
+    cpH6: 12.00
+};
+
 module.exports = { 
     nCurve,
     pCurve,
-    kCurve
+    kCurve,
+    pHCurve
 };
