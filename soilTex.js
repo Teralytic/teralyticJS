@@ -45,4 +45,5 @@ var texClass = "Sand";
 let texVars = soilWater(texClass);
 console.log("Soil Texture Variables: ", texVars); 
 
-module.exports = { texVars };
+// pass function into module exports
+module.exports = { soilWater };

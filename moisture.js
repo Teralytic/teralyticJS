@@ -1,3 +1,4 @@
+const { soilWater } = require('./soilTex.js')
 'use strict';
 // raw V to permitivitty
 
@@ -19,6 +20,8 @@ function perm(moistureRaw) {
 var permittivity = perm(moistureRaw);
 console.log("Permittivity: ", permittivity);
 
+// Step 2: Convert Perm to VWC % Using Topp Equation
+
 function volumetric(permittivity) {
     var convertedVWC;
     
@@ -30,9 +33,18 @@ function volumetric(permittivity) {
 var vwc = volumetric(permittivity);
 console.log("VWC: ", vwc)
 
+// Step 3: Bring in Soil Texture 
+
+// bring in soil texture from event 
+// soilTexture = event["soilTexture"]
+var soilTexture = "Sand";
+var soilTextureVars = soilWater(soilTexture); 
+console.log("Texture Vars: ", soilTextureVars); 
+
 module.exports = {
     permittivity,
-    vwc
-}
+    vwc,
+    soilTextureVars
+}; 
 
 
