@@ -37,7 +37,7 @@ console.log("VWC: ", vwc)
 
 // bring in soil texture from event 
 // soilTexture = event["soilTexture"]
-var soilTexture = "Sand";
+var soilTexture = "Clay";
 var soilTextureVars = soilWater(soilTexture); 
 console.log("Texture Vars: ", soilTextureVars); 
 
