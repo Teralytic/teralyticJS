@@ -2,6 +2,8 @@
 // FC = Field Capacity (the moisture levels 2 days after a rain event)
 // PWP = Permanent Wilting Point (Don't want to drop to this level!)
 // MPAW = Max Plant Available Water 
+// MAD = Management Allowed Defecit (default to 50%)
+// MAL = Management Allowed Lower Limit
 // Coef = coefficient for transdormign AWC % to available water in/ft (used for irrigation management)
 
 'use strict';
@@ -12,6 +14,7 @@ function soilWater(soilTexture) {
     var MPAW;
     var coef;
     var soilVars;
+    var awcPack; 
   if (soilTexture == 'null') {
     var soilVars = {
       FC: 'null',
@@ -174,8 +177,20 @@ function soilWater(soilTexture) {
         coef: 3.42
       }; 
   }; 
-
-  return soilVars;    
+    // management allowed lower defecit 
+    var MAD = soilVars['MPAW']*0.5;
+    //console.log('MAD: ', MAD)
+    // root depth (default 40 cm)
+    var rootDepth = 40.0;
+    // management allowed lower limit 
+    var MAL = (soilVars['FC'] - (soilVars['MPAW']*MAD)).toFixed(4);
+    //console.log('MAL: ', MAL)
+    awcPack = {
+        MAL: MAL,
+        rootDepth: rootDepth,
+        coef: soilVars['coef']
+    };
+  return awcPack;    
 };
 
 // enter soil texture 

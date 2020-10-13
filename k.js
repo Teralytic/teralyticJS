@@ -58,8 +58,11 @@ function kPPM (kMolarity) {
 
 var kPPM1 = kPPM(kMolarity);
 console.log("K (PPM): ", kPPM1);
+var kLbsPerAcre = kPPM1*2;
+console.log("K (lbs per acre): ", kLbsPerAcre);
 
 module.exports = { 
     kMolarity,
-    kPPM1
+    kPPM1,
+    kLbsPerAcre
 };

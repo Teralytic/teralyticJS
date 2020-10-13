@@ -31,20 +31,32 @@ function volumetric(permittivity) {
 };
 
 var vwc = volumetric(permittivity);
-console.log("VWC: ", vwc)
+//console.log("VWC: ", vwc)
 
 // Step 3: Bring in Soil Texture 
 
 // bring in soil texture from event 
 // soilTexture = event["soilTexture"]
 var soilTexture = "Clay";
-var soilTextureVars = soilWater(soilTexture); 
-console.log("Texture Vars: ", soilTextureVars); 
+var MAL = soilWater(soilTexture)['MAL'];
+var rootDepth = soilWater(soilTexture)['rootDepth'];
+var coef = soilWater(soilTexture)['coef'];
+//console.log("MAL: ", MAL); 
+//console.log("rootDepth: ", rootDepth);
+//console.log("coef: ", coef);
+// available water capacity (AWC)
+var awc;
+awc = ((((vwc*100)-MAL)*rootDepth)/10000); 
+console.log("AWC (%): ", awc);
+// plant available water (in/ft)
+paw = (awc*coef).toFixed(2);
+console.log("PAW: ", paw);
 
 module.exports = {
     permittivity,
     vwc,
-    soilTextureVars
+    awc,
+    paw
 }; 
 
 

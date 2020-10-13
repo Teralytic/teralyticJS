@@ -67,8 +67,11 @@ function nPPM (nMolarity) {
 
 var nPPM1 = nPPM(nMolarity);
 console.log("NO3- (PPM): ", nPPM1);
+var nLbsPerAcre = nPPM1*2;
+console.log("NO3- (lbs per acre): ", nLbsPerAcre);
 
 module.exports = { 
     nMolarity,
-    nPPM1
+    nPPM1,
+    nLbsPerAcre
 };

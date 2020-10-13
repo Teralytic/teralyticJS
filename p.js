@@ -81,9 +81,12 @@ var pH = 8;
 //var pH = event["pH"]
 var pPPM2 = p_Coef(pH,pPPM1);
 console.log("H2PO4- (PPM): ", pPPM2);
+var pLbsPerAcre = pPPM2*2; 
+console.log("H2PO4- (lbs per acre): ", pLbsPerAcre);
 
 module.exports = { 
     pMolarity,
     pPPM1,
-    pPPM2
+    pPPM2,
+    pLbsPerAcre
 };
