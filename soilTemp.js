@@ -20,6 +20,7 @@ function temperatureConversion(t, hardware) {
     return soilTemp.toFixed(2);
 };
 
+// Raw ADC input 
 // var rawTemp = event['rawTemp']
 var rawTemp = 403;
 // hardware version

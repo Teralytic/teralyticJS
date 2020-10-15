@@ -57,9 +57,26 @@ const pHCurve = {
     cpH6: 12.00
 };
 
+// o2 piecewise curve (mV to PPM)
+const o2Curve = {
+   v1: 3.0769,
+   v2: 200.0000,
+   v3: 400.0000,
+   v4: 600.0000,
+   v5: 1206.1538,
+   v6: 1867.6923,
+   c1: 0.00018,
+   c2: 2.66129,
+   c3: 5.32258,
+   c4: 8.05300,
+   c5: 16.19851,
+   c6: 25.15367
+}; 
+
 module.exports = { 
     nCurve,
     pCurve,
     kCurve,
-    pHCurve
+    pHCurve,
+    o2Curve
 };
