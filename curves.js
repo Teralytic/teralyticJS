@@ -73,6 +73,40 @@ const o2Curve = {
    c6: 25.15367
 }; 
 
+// degree growing days
+const degreeGrowing = {
+  Asparagus: 4.4,
+  Barley: 4.4,
+  Bean: 10,
+  Beet: 3.3,
+  Broccoli: 4.4,
+  Carrot: 3.3,
+  Collards: 4.4,
+  Corn: 10,
+  Cucumber: 12.8,
+  Eggplant: 15.6,
+  Grape: 10,
+  Lettuce: 4.4, 
+  Muskmellon: 10,
+  Oats: 4.4,
+  Onion: 1.7,
+  Okra: 15.6,
+  Pea: 4.4,
+  Pepper: 10,
+  Potato: 7.2,
+  Rice: 10,
+  Rye: 4.4,
+  Sorghum: 10,
+  Soybean: 10,
+  Squash: 7.2,
+  Strawberry: 3.9,
+  Sunflower: 7.2,
+  Sweetpotato: 15.6,
+  Watermelon: 12.8,
+  Wheat: 4.4,
+  Other: 10
+};
+
 // temperature
 
 // Soil Temperature - Celsius 
@@ -100,5 +134,6 @@ module.exports = {
     kCurve,
     pHCurve,
     o2Curve,
-    temperatureConversion
+    temperatureConversion,
+    degreeGrowing
 };
