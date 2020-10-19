@@ -27,3 +27,5 @@ function calculateDGD (tempMin, tempMax, tempBase) {
 };
 
 console.log("Degree Growing Days: ", calculateDGD(tempMin, tempMax, tempBase));
+
+module.exports = { calculateDGD };
