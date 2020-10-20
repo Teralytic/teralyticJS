@@ -8,10 +8,21 @@ const nCurve = {
     vn6: 3329.99,
     cn1: 0.0001,
     cn2: 0.001,
-    cn4: 0.00178,
+    cn3: 0.00178,
+    cn4: 0.005,
     cn5: 0.007,
     cn6: 0.01
 }; 
+
+// alternate N Curves - input raw mV
+
+// nLog 1 (Panel ID: TER19260109)
+// raw range: 1630 to 1690 
+function nLog1 (nRaw) {
+    var nLogConverted1;
+    nLogConverted1 = (Math.pow(10, ((nRaw-1656.71)/32.35))/1000).toFixed(5);
+    return nLogConverted1; 
+};
 
 // p piecewise regression curve (mV to mol/L)
 
@@ -130,6 +141,7 @@ function temperatureConversion(t, hardware) {
 
 module.exports = { 
     nCurve,
+    nLog1,
     pCurve,
     kCurve,
     pHCurve,

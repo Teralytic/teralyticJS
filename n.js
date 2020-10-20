@@ -1,10 +1,11 @@
 const { nCurve } = require('./curves.js')
+const { nLog1 } = require('./curves.js')
 'use strict';
 // raw to molarity (mol/L) calibration curve
 // 6-point NO3- Piecewise Regression Curve
 
 // current raw mV N value
-var nRaw = 1500;
+var nRaw = 1630;
 // var nRaw = event['nRaw'];
 
 // STEP 1: Convert raw mV to molarity (mol/L)
@@ -49,6 +50,10 @@ function nMol(nRaw, nCurve) {
 
 var nMolarity = nMol(nRaw, nCurve);
 console.log("NO3- (mol/L): ", nMolarity);
+
+// if you want to use a different curve for Molarity, bring it in instead
+var nMolarityLog1 = nLog1(nRaw);
+console.log("Alternate NO3- (mol/L): ", nMolarityLog1); 
 
 // STEP 2 
 
