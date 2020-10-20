@@ -1,11 +1,14 @@
-const { nCurve } = require('./curves.js')
-const { nLog1 } = require('./curves.js')
+const { nCurve } = require('./curves.js');
+const { nLog1 } = require('./curves.js');
+const { nLog2 } = require('./curves.js');
+const { nLog3 } = require('./curves.js');
+const { nLog4 } = require('./curves.js');
 'use strict';
 // raw to molarity (mol/L) calibration curve
 // 6-point NO3- Piecewise Regression Curve
 
 // current raw mV N value
-var nRaw = 1630;
+var nRaw = 1650;
 // var nRaw = event['nRaw'];
 
 // STEP 1: Convert raw mV to molarity (mol/L)
@@ -53,8 +56,13 @@ console.log("NO3- (mol/L): ", nMolarity);
 
 // if you want to use a different curve for Molarity, bring it in instead
 var nMolarityLog1 = nLog1(nRaw);
-console.log("Alternate NO3- (mol/L): ", nMolarityLog1); 
-
+console.log("Alternate 1 NO3- (mol/L): ", nMolarityLog1); 
+var nMolarityLog2 = nLog2(nRaw);
+console.log("Alternate 2 NO3- (mol/L): ", nMolarityLog2);
+var nMolarityLog3 = nLog3(nRaw);
+console.log("Alternate 3 NO3- (mol/L) ", nMolarityLog3);
+var nMolarityLog4 = nLog4(nRaw);
+console.log("Alternate 4 NO3- (mol/L) ", nMolarityLog4);
 // STEP 2 
 
 // convert mol/l to PPM (mg/L)
@@ -77,6 +85,10 @@ console.log("NO3- (lbs per acre): ", nLbsPerAcre);
 
 module.exports = { 
     nMolarity,
+    nMolarityLog1,
+    nMolarityLog2,
+    nMolarityLog3,
+    nMolarityLog4,
     nPPM1,
     nLbsPerAcre
 };

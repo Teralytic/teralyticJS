@@ -1,3 +1,5 @@
+///// NITRATE CURVES
+
 // n piecewise regression curve (mV to mol/L)
 const nCurve = {
     vn1: 500.00,
@@ -16,13 +18,79 @@ const nCurve = {
 
 // alternate N Curves - input raw mV
 
-// nLog 1 (Panel ID: TER19260109)
-// raw range: 1630 to 1690 
+
+// nLog 1 (Panel ID: TER19260040)
+// raw range: 680 to 750
 function nLog1 (nRaw) {
     var nLogConverted1;
-    nLogConverted1 = (Math.pow(10, ((nRaw-1656.71)/32.35))/1000).toFixed(5);
-    return nLogConverted1; 
+    
+    if (nRaw <= 0 || nRaw >= 3300) {
+        nLogConverted1 = null;
+    } else if (nRaw < 680) {
+        nLogConverted1 = 0.0001;
+    } else if (nRaw > 750) {
+        nLogConverted1 = 0.01;
+    } else {
+        nLogConverted1 = (Math.pow(10, ((nRaw-710.84)/36.47))/1000).toFixed(5);   
+    }
+    return nLogConverted1;
 };
+
+// nLog 2 (Panel ID: TER1926015)
+// raw range: 925 to 1075
+function nLog2 (nRaw) {
+    var nLogConverted2;
+    
+    if (nRaw <= 0 || nRaw >= 3300) {
+        nLogConverted2 = null;
+    } else if (nRaw < 925) {
+        nLogConverted2 = 0.0001;
+    } else if (nRaw > 1075) {
+        nLogConverted2 = 0.01;
+    } else {
+        nLogConverted2 = (Math.pow(10, ((nRaw-1011.96)/83.18))/1000).toFixed(5);   
+    }
+    return nLogConverted2;
+};
+
+// nLog 3 (Panel ID: TER19260044)
+// raw range: 1210 to 1280
+function nLog3 (nRaw) {
+    var nLogConverted3;
+    
+    if (nRaw <= 0 || nRaw >= 3300) {
+        nLogConverted3 = null;
+    } else if (nRaw < 1210) {
+        nLogConverted2 = 0.0001;
+    } else if (nRaw > 1280) {
+        nLogConverted2 = 0.01;
+    } else {
+        nLogConverted3 = (Math.pow(10, ((nRaw-1236.51)/33.69))/1000).toFixed(5);   
+    }
+    return nLogConverted2;
+};
+
+
+// nLog 4 (Panel ID: TER19260109)
+// raw range: 1630 to 1690 
+function nLog4 (nRaw) {
+    var nLogConverted4;
+    
+    if (nRaw <= 0 || nRaw >= 3300) {
+        nLogConverted4 = null;
+    } else if (nRaw < 1630) {
+        nLogConverted4 = 0.0001;
+    } else if (nRaw > 1690) {
+        nLogConverted4 = 0.01;
+    } else {
+        nLogConverted4 = (Math.pow(10, ((nRaw-1656.71)/32.35))/1000).toFixed(5);   
+    }
+    return nLogConverted4;
+};
+
+////////// END N CURVES ///////////////////
+
+////////PHOSPHATE CURVES ///////////////////
 
 // p piecewise regression curve (mV to mol/L)
 
@@ -142,6 +210,9 @@ function temperatureConversion(t, hardware) {
 module.exports = { 
     nCurve,
     nLog1,
+    nLog2,
+    nLog3,
+    nLog4,
     pCurve,
     kCurve,
     pHCurve,
