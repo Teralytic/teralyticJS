@@ -1,8 +1,6 @@
-const { pHCurve } = require('./curves.js')
-const { pHLin1 } = require('./curves.js')
+const { pHCurve } = require('./curves.js') // pH Piecewise regression
+const { pHLin1 } = require('./curves.js') // pH Linear 1 
 'use strict';
-// raw mV to pH calibration curve
-// 6-point pH Piecewise Regression Curve
 
 // current raw mV value
 var pHRaw = 1500;

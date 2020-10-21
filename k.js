@@ -1,14 +1,12 @@
-const { kCurve } = require('./curves.js');
-const { kLog1 } = require('./curves.js');
-const { kLog2 } = require('./curves.js');
-const { kLog3 } = require('./curves.js');
-const { kLog4 } = require('./curves.js');
+const { kCurve } = require('./curves.js'); // K Piecewise regression
+const { kLog1 } = require('./curves.js'); // K Logarithmic 1 
+const { kLog2 } = require('./curves.js'); // K Logarithmic 2
+const { kLog3 } = require('./curves.js'); // K Logarithmic 3
+const { kLog4 } = require('./curves.js'); // K Logarithmic 4
 'use strict';
-// raw to molarity (mol/L) calibration curve
-// 6-point NO3- Piecewise Regression Curve
 
 // current raw mV P value
-var kRaw = 1200;
+var kRaw = 3000;
 // var nRaw = event['nRaw'];
 
 // STEP 1: Convert raw mV to molarity (mol/L)

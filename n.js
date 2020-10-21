@@ -1,11 +1,9 @@
-const { nCurve } = require('./curves.js');
-const { nLog1 } = require('./curves.js');
-const { nLog2 } = require('./curves.js');
-const { nLog3 } = require('./curves.js');
-const { nLog4 } = require('./curves.js');
+const { nCurve } = require('./curves.js'); // NO3- piecewise regression
+const { nLog1 } = require('./curves.js'); // NO3- Logarithmic 1
+const { nLog2 } = require('./curves.js'); // NO3- Logarithmic 2
+const { nLog3 } = require('./curves.js'); // NO3- Logarithmic 3
+const { nLog4 } = require('./curves.js'); // NO3- Logarithmic 4
 'use strict';
-// raw to molarity (mol/L) calibration curve
-// 6-point NO3- Piecewise Regression Curve
 
 // current raw mV N value
 var nRaw = 1650;

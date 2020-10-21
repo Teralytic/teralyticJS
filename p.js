@@ -1,10 +1,7 @@
-const { pCurve } = require('./curves.js');
-const { pLog1 } = require('./curves.js');
-const { pLog2 } = require('./curves.js');
+const { pCurve } = require('./curves.js'); // P Piecewise regression 
+const { pLog1 } = require('./curves.js'); // P Logarithmic 1 
+const { pLog2 } = require('./curves.js'); // P Logarithmic 2 
 'use strict';
-// raw to molarity (mol/L) calibration curve
-// 4-point Piecewise Regression Curve
-//console.log(pCurve)
 
 // current raw mV P value
 var pRaw = 2100;
