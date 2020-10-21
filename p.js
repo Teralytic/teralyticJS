@@ -1,4 +1,6 @@
-const { pCurve } = require('./curves.js')
+const { pCurve } = require('./curves.js');
+const { pLog1 } = require('./curves.js');
+const { pLog2 } = require('./curves.js');
 'use strict';
 // raw to molarity (mol/L) calibration curve
 // 4-point Piecewise Regression Curve
@@ -43,13 +45,19 @@ function pMol(pRaw, pCurve) {
 var pMolarity = pMol(pRaw, pCurve);
 console.log("P (mol/L): ", pMolarity);
 
+// if you want to use a different curve for Molarity, bring it in instead
+var pMolarityLog1 = pLog1(pRaw);
+console.log("Alternate 1 P (mol/L): ", pMolarityLog1); 
+var pMolarityLog2 = pLog2(pRaw);
+console.log("Alternate 2 P (mol/L): ", pMolarityLog2);
+
 // STEP 2 
 
 // convert mol/l to PPM (mg/L)
 
 function pPPM (pMolarity) {
     var convertedPppm;
-    if (pMol==null) {
+    if (pMolarity==null) {
         convertedPppm = null;
     } else {
         convertedPppm = ((pMolarity*96.9872)*1000)*(30.973762/96.987);   
@@ -60,6 +68,7 @@ function pPPM (pMolarity) {
 
 var pPPM1 = pPPM(pMolarity);
 console.log("P (PPM): ", pPPM1);
+
 
 // STEP 3 
 

@@ -63,7 +63,7 @@ console.log("Alternate 4 K (mol/L) ", kMolarityLog4);
 
 function kPPM (kMolarity) {
     var convertedKppm;
-    if (kMol==null) {
+    if (kMolarity==null) {
         convertedKppm = null;
     } else {
         convertedKppm = (kMolarity*39.0983)*1000

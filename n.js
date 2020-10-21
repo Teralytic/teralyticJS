@@ -69,7 +69,7 @@ console.log("Alternate 4 NO3- (mol/L) ", nMolarityLog4);
 
 function nPPM (nMolarity) {
     var convertedNppm;
-    if (nMol==null) {
+    if (nMolarity==null) {
         convertedNppm = null;
     } else {
         convertedNppm = ((nMolarity*62.005)*1000)*(14.0067/62.0049);   

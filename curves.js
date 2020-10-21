@@ -104,8 +104,41 @@ const pCurve = {
     cp3: 0.00009,
     cp4: 0.0001
 };
-// console.log(pCurve['vp1']);
 
+// pLog 1 (Panel ID: TERA000062) 
+// These V3 boards show neg. slope for P
+// raw range: 1750 to 1450 mV
+function pLog1 (pRaw) {
+    var pLogConverted1;
+    
+    if (pRaw <= 0 || pRaw >= 3300) {
+        pLogConverted1 = null;
+    } else if (pRaw > 1750) {
+        pLogConverted1 = 0.00005;
+    } else if (pRaw < 1450) {
+        pLogConverted1 = 0.0001;
+    } else {
+        pLogConverted1 = (Math.pow(10, ((pRaw-1264.2867)/-79.8633))/1000).toFixed(5);   
+    }
+    return pLogConverted1;
+};
+
+// pLog 1 (Panel ID: TER19260034) 
+// raw range: 1415 to 1380 mV
+function pLog2 (pRaw) {
+    var pLogConverted2;
+    
+    if (pRaw <= 0 || pRaw >= 3300) {
+        pLogConverted2 = null;
+    } else if (pRaw > 1415) {
+        pLogConverted2= 0.00005;
+    } else if (pRaw < 1380) {
+        pLogConverted2 = 0.0001;
+    } else {
+        pLogConverted2 = (Math.pow(10, ((pRaw-1371.81)/-8.27))/1000).toFixed(5);   
+    }
+    return pLogConverted2;
+};
 
 /////// K Curves////////////////// (Note: Negative Slope)
 // k piecewise regression curve (mV to mol/L)
@@ -306,6 +339,8 @@ module.exports = {
     nLog3, // n Logarithmic 3 (mol/L) - 1210 to 1280 mV
     nLog4, // n logarithmic 4 (mol/L) - 1630 to 1690 mV
     pCurve, // p piecewise regression (mol/L)
+    pLog1, // p logarithmic 1 (mol/L) - 1750 to 1450 mV
+    pLog2, // p logarithmic 2 (mol/L) - 1415 to 1380 mV
     kCurve, // k piecewise regression (mol/L)
     kLog1, // k logarithmic 1 (mol/L) - 1460 - 1360 mV
     kLog2, // k logarithmic 2 (mol/L) - 1270 - 1200 mV
