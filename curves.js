@@ -106,6 +106,8 @@ const pCurve = {
 };
 // console.log(pCurve['vp1']);
 
+
+/////// K Curves////////////////// (Note: Negative Slope)
 // k piecewise regression curve (mV to mol/L)
 
 const kCurve = {
@@ -117,6 +119,74 @@ const kCurve = {
     ck2: 0.00009,
     ck3: 0.0002,
     ck4: 0.001 
+};
+
+// kLog 1 (Panel ID: TER19260112)
+// raw range: 1460 to 1360
+function kLog1 (kRaw) {
+    var kLogConverted1;
+    
+    if (kRaw <= 0 || kRaw >= 3300) {
+        kLogConverted1 = null;
+    } else if (kRaw > 1460) {
+        kLogConverted1 = 0.0001;
+    } else if (kRaw < 1360) {
+        kLogConverted1 = 0.01;
+    } else {
+        kLogConverted1 = (Math.pow(10, ((kRaw-1410)/-46.4))/1000).toFixed(5);    
+    }
+    return kLogConverted1;
+};
+
+// kLog 2 (Panel ID: TER19260043)
+// raw range: 1270 to 1200
+function kLog2 (kRaw) {
+    var kLogConverted2;
+    
+    if (kRaw <= 0 || kRaw >= 3300) {
+        kLogConverted2 = null;
+    } else if (kRaw > 1270) {
+        kLogConverted2 = 0.0001;
+    } else if (kRaw < 1200) {
+        kLogConverted2 = 0.01;
+    } else {
+        kLogConverted2 = (Math.pow(10, ((kRaw-1252.14)/-28.3))/1000).toFixed(5);    
+    }
+    return kLogConverted2;
+};
+
+// kLog 3 (Panel ID: TER19260067)
+// raw range: 770 to 710
+function kLog3 (kRaw) {
+    var kLogConverted3;
+    
+    if (kRaw <= 0 || kRaw >= 3300) {
+        kLogConverted3 = null;
+    } else if (kRaw > 770) {
+        kLogConverted3 = 0.0001;
+    } else if (kRaw < 710) {
+        kLogConverted3 = 0.01;
+    } else {
+        kLogConverted3 = (Math.pow(10, ((kRaw-743.21)/-31.89))/1000).toFixed(5);    
+    }
+    return kLogConverted3;
+};
+
+// kLog 4 (Panel ID: TER19260034)
+// raw range: 700 to 650
+function kLog4 (kRaw) {
+    var kLogConverted4;
+    
+    if (kRaw <= 0 || kRaw >= 3300) {
+        kLogConverted4 = null;
+    } else if (kRaw > 770) {
+        kLogConverted4 = 0.0001;
+    } else if (kRaw < 710) {
+        kLogConverted4 = 0.01;
+    } else {
+        kLogConverted4 = (Math.pow(10, ((kRaw-682.24)/-22.30))/1000).toFixed(5);    
+    }
+    return kLogConverted4;
 };
 
 ////////// pH CURVES /////////////////
@@ -237,6 +307,10 @@ module.exports = {
     nLog4, // n logarithmic 4 (mol/L) - 1630 to 1690 mV
     pCurve, // p piecewise regression (mol/L)
     kCurve, // k piecewise regression (mol/L)
+    kLog1, // k logarithmic 1 (mol/L) - 1460 - 1360 mV
+    kLog2, // k logarithmic 2 (mol/L) - 1270 - 1200 mV
+    kLog3, // k logarithmic 3 (mol/L) - 770 - 710 mV
+    kLog4, // k logarithmic 3 (mol/L) - 700 - 650 mV
     pHCurve, // pH piecewise regression (mol/L) 
     pHLin1, // pH Linear regression 1 (pH) - 1600 to 1800 mV
     o2Curve, // o2 (PPM)

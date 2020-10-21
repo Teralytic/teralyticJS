@@ -1,10 +1,14 @@
-const { kCurve } = require('./curves.js')
+const { kCurve } = require('./curves.js');
+const { kLog1 } = require('./curves.js');
+const { kLog2 } = require('./curves.js');
+const { kLog3 } = require('./curves.js');
+const { kLog4 } = require('./curves.js');
 'use strict';
 // raw to molarity (mol/L) calibration curve
 // 6-point NO3- Piecewise Regression Curve
 
 // current raw mV P value
-var kRaw = 3000;
+var kRaw = 1200;
 // var nRaw = event['nRaw'];
 
 // STEP 1: Convert raw mV to molarity (mol/L)
@@ -38,9 +42,20 @@ function kMol(kRaw, kCurve) {
     return convertedK.toFixed(5);
 }; 
 
-
+// convert raw mV to molarity using kCurve (piecewise regression model)
 var kMolarity = kMol(kRaw, kCurve);
 console.log("K (mol/L): ", kMolarity);
+
+
+// if you want to use a different curve for molarity, bring it in instead
+var kMolarityLog1 = kLog1(kRaw);
+console.log("Alternate 1 K (mol/L): ", kMolarityLog1); 
+var kMolarityLog2 = kLog2(kRaw);
+console.log("Alternate 2 K (mol/L): ", kMolarityLog2);
+var kMolarityLog3 = kLog3(kRaw);
+console.log("Alternate 3 K (mol/L) ", kMolarityLog3);
+var kMolarityLog4 = kLog4(kRaw);
+console.log("Alternate 4 K (mol/L) ", kMolarityLog4);
 
 // STEP 2 
 

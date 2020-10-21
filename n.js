@@ -85,10 +85,6 @@ console.log("NO3- (lbs per acre): ", nLbsPerAcre);
 
 module.exports = { 
     nMolarity,
-    nMolarityLog1,
-    nMolarityLog2,
-    nMolarityLog3,
-    nMolarityLog4,
     nPPM1,
     nLbsPerAcre
 };
