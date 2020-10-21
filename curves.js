@@ -119,6 +119,8 @@ const kCurve = {
     ck4: 0.001 
 };
 
+////////// pH CURVES /////////////////
+
 // pH piecewise regression curve (mV to mol/L)
 
 const pHCurve = {
@@ -136,6 +138,26 @@ const pHCurve = {
     cpH6: 12.00
 };
 
+// pH Linear Curve 1 
+// raw range: 1600 to 1800 mV
+// Panel ID: TER19260110
+function pHLin1 (pHRaw) {
+    var pHLinConverted1;
+    
+    if (pHRaw <= 0 || pHRaw >= 3300) {
+        pHLinConverted1 = null;
+    } else if (pHRaw < 1600) {
+        pHLinConverted1 = 4;
+    } else if (pHRaw > 1800) {
+        pHLinConverted1 = 10;
+    } else {
+        pHLinConverted1 = (pH6Raw - 1391.42)/39.58;   
+    }
+    return pHLinConverted1;
+}; 
+    
+/////////// o2 - Oxygen / aeration /////    
+    
 // o2 piecewise curve (mV to PPM)
 const o2Curve = {
    v1: 3.0769,
@@ -208,15 +230,16 @@ function temperatureConversion(t, hardware) {
 };
 
 module.exports = { 
-    nCurve,
-    nLog1,
-    nLog2,
-    nLog3,
-    nLog4,
-    pCurve,
-    kCurve,
-    pHCurve,
-    o2Curve,
-    temperatureConversion,
-    degreeGrowing
+    nCurve, // n piecewise regression (mol/L)
+    nLog1, // n logarithmic 1 (mol/L) - 680 to 750 mV
+    nLog2, // n logarithmic 2 (mol/L) - 925 to 1075 mV
+    nLog3, // n Logarithmic 3 (mol/L) - 1210 to 1280 mV
+    nLog4, // n logarithmic 4 (mol/L) - 1630 to 1690 mV
+    pCurve, // p piecewise regression (mol/L)
+    kCurve, // k piecewise regression (mol/L)
+    pHCurve, // pH piecewise regression (mol/L) 
+    pHLin1, // pH Linear regression 1 (pH) - 1600 to 1800 mV
+    o2Curve, // o2 (PPM)
+    temperatureConversion, // temp (C)
+    degreeGrowing // degree growing day crop coefficients
 };

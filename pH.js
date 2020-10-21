@@ -1,4 +1,5 @@
 const { pHCurve } = require('./curves.js')
+const { pHLin1 } = require('./curves.js')
 'use strict';
 // raw mV to pH calibration curve
 // 6-point pH Piecewise Regression Curve
@@ -48,5 +49,7 @@ function pHConvert(pHRaw, pHCurve) {
 
 var pH = pHConvert(pHRaw, pHCurve);
 console.log("pH: ", pH)
+var pHLinear1 = pHLin1(pHRaw);
+console.log("pH Alt 1: ", pHLinear1);
 
 module.exports = { pH };
