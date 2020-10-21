@@ -114,9 +114,9 @@ function pLog1 (pRaw) {
     if (pRaw <= 0 || pRaw >= 3300) {
         pLogConverted1 = null;
     } else if (pRaw > 1750) {
-        pLogConverted1 = 0.00005;
-    } else if (pRaw < 1450) {
         pLogConverted1 = 0.0001;
+    } else if (pRaw < 1450) {
+        pLogConverted1 = 0.01;
     } else {
         pLogConverted1 = (Math.pow(10, ((pRaw-1264.2867)/-79.8633))/1000).toFixed(5);   
     }
@@ -131,9 +131,9 @@ function pLog2 (pRaw) {
     if (pRaw <= 0 || pRaw >= 3300) {
         pLogConverted2 = null;
     } else if (pRaw > 1415) {
-        pLogConverted2= 0.00005;
+        pLogConverted2= 0.0001;
     } else if (pRaw < 1380) {
-        pLogConverted2 = 0.0001;
+        pLogConverted2 = 0.01;
     } else {
         pLogConverted2 = (Math.pow(10, ((pRaw-1371.81)/-8.27))/1000).toFixed(5);   
     }
