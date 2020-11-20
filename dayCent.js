@@ -1,5 +1,8 @@
 'use strict';
 
+// DayCent model background: https://www2.nrel.colostate.edu/projects/daycent/
+// DAYCENT is the daily time-step version of the CENTURY biogeochemical model (Parton et al., 1994). DAYCENT simulates fluxes of C and N among the atmosphere, vegetation, and soil 
+
 // function to return the min and max of a list 
 function returnMin(inputList) {
     var minVal = Math.min.apply(Math, inputList);
