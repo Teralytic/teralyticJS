@@ -45,18 +45,48 @@ var coef = soilWater(soilTexture)['coef'];
 //console.log("rootDepth: ", rootDepth);
 //console.log("coef: ", coef);
 // available water capacity (AWC)
+/*
 var awc;
 awc = ((((vwc*100)-MAL)*rootDepth)/10000); 
 console.log("AWC (%): ", awc);
 // plant available water (in/ft)
 paw = (awc*coef).toFixed(2);
 console.log("PAW: ", paw);
+*/
+// AWC 
+
+function awc(vwc) {
+    var convertedAWC;
+    
+    convertedAWC = ((((vwc*100)-MAL)*rootDepth)/10000); 
+    
+    return convertedAWC.toFixed(2);
+}; 
+
+
+var awc = awc(vwc);
+console.log("AWC (%) : ", awc);
+
+// PLANT available Water 
+function paw(awc, coef) {
+    var convertedPAW;
+    
+    convertedPAW = (awc*coef).toFixed(2); 
+    
+    return convertedPAW;
+}; 
+
+var paw = paw(awc);
+console.log("AWC (%) : ", awc);
+
+// export vars 
 
 module.exports = {
     permittivity,
     vwc,
     awc,
-    paw
+    paw,
+    awc
 }; 
 
 
