@@ -36,11 +36,6 @@ function pH_Diff(pH, pH_raw_start, pH_raw_current) {
     
 };
 
-var pH = Number(pH_start(pH_raw_start));
-console.log("pH Start: ", pH);
-// difference in pH
-var pH_diff= pH_Diff(pH, pH_raw_start, pH_raw_current);
-
 // apply difference in pH to starting value 
 function pHNow (pH, pH_diff) {
     pH_now = pH + pH_diff;
@@ -52,5 +47,9 @@ function pHNow (pH, pH_diff) {
     return pH_now;
 }
 
+var pH = Number(pH_start(pH_raw_start));
+console.log("pH Start: ", pH);
+// difference in pH
+var pH_diff= pH_Diff(pH, pH_raw_start, pH_raw_current);
 var pH_now = pHNow(pH, pH_diff);
 console.log("pH Now: ", pH_now);
